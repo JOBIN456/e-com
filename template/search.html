@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{%  load static %}
+{% block metadescription %}
+We have  variety of foods and juices........
+
+      {% endblock %}
+      {% block title %}
+      Search
+      {% endblock %}
+      {% block content %}  
+      <div>
+        <p class="text-center my_search">You have searched for:<b>{{query}}</b></p>
+      </div>
+      
+      <div class="container">
+        <div class="row mx_auto">
+            
+        {% for pro in products %}
+        <div class="my_bottom_margin  col-md-3">
+        
+            <div class="card text-center" style="min-width:18rem;">
+                <a href="{{pro.get_url}}"><img class="card-img-top my_image "src="{{pro.image.url}}" alt="{{pro.name}}"></a>
+            <div class="card-body">
+            <h4>{{pro.name}}</h4>
+            <p>RS {{pro.price}}</p>
+            </div>
+        </div>
+            </div>
+        
+        
+        {%  empty %} 
+        <div class="row mx-auto">
+            <p class="text-center my_search">0 Results found</p>
+        
+        {% endfor %}
+      </div>
+    </div></div>
+      {% endblock %}
